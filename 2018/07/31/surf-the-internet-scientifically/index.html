@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="VPS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="序言对于学计算机专业的人来说，Google绝对是一个很好的东西，很多很好的资源都只能在外网才能够访问，但我们又常常困于VPN的低速且不安全，于是我们总会追求更快的上网体验，在看了很多的教程过后这两天我自己也尝试搭建了一个ssr用于更方便更快捷更安全的科学上网体验。在这儿写下这篇博客的目的是想为与我有同样想法的人提供一点点的帮助，自己本身比较菜，于是我追求用最简单的直白的语言描述搭建的过程，可能会有">
+<meta name="keywords" content="VPS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="surf the internet scientifically">
+<meta property="og:url" content="http://yoursite.com/2018/07/31/surf-the-internet-scientifically/index.html">
+<meta property="og:site_name" content="Codingcheng">
+<meta property="og:description" content="序言对于学计算机专业的人来说，Google绝对是一个很好的东西，很多很好的资源都只能在外网才能够访问，但我们又常常困于VPN的低速且不安全，于是我们总会追求更快的上网体验，在看了很多的教程过后这两天我自己也尝试搭建了一个ssr用于更方便更快捷更安全的科学上网体验。在这儿写下这篇博客的目的是想为与我有同样想法的人提供一点点的帮助，自己本身比较菜，于是我追求用最简单的直白的语言描述搭建的过程，可能会有">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/vps/vps-1.jpg">
+<meta property="og:image" content="http://yoursite.com/images/vps/vps-4.png">
+<meta property="og:image" content="http://yoursite.com/images/vps/vps-2.png">
+<meta property="og:image" content="http://yoursite.com/images/vps/vps-3.png">
+<meta property="og:image" content="http://yoursite.com/images/vps/vps-5.png">
+<meta property="og:image" content="http://yoursite.com/images/vps/vps-6.png">
+<meta property="og:image" content="http://yoursite.com/images/vps/vps-7.png">
+<meta property="og:image" content="http://yoursite.com/images/vps/vps-8.png">
+<meta property="og:image" content="http://yoursite.com/images/vps/vps-9.png">
+<meta property="og:image" content="http://yoursite.com/images/vps/vps-11.png">
+<meta property="og:image" content="http://yoursite.com/images/vps/vps-12.png">
+<meta property="og:updated_time" content="2018-08-01T11:49:42.410Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="surf the internet scientifically">
+<meta name="twitter:description" content="序言对于学计算机专业的人来说，Google绝对是一个很好的东西，很多很好的资源都只能在外网才能够访问，但我们又常常困于VPN的低速且不安全，于是我们总会追求更快的上网体验，在看了很多的教程过后这两天我自己也尝试搭建了一个ssr用于更方便更快捷更安全的科学上网体验。在这儿写下这篇博客的目的是想为与我有同样想法的人提供一点点的帮助，自己本身比较菜，于是我追求用最简单的直白的语言描述搭建的过程，可能会有">
+<meta name="twitter:image" content="http://yoursite.com/images/vps/vps-1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/31/surf-the-internet-scientifically/"/>
+
+
+
+
+
+  <title>surf the internet scientifically | Codingcheng</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Codingcheng</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">书山有路勤为径，学海无涯苦作舟</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/31/surf-the-internet-scientifically/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiacheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Codingcheng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">surf the internet scientifically</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-31T08:26:43+08:00">
+                2018-07-31
+              </time>
+            
+            
+                <span class="post-updated">
+                 &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2018-08-01T19:49:42+08:00" content="2018-08-01">
+                2018-08-01
+              </time>
+                </span>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/VPS搭建教程/" itemprop="url" rel="index">
+                    <span itemprop="name">VPS搭建教程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p>对于学计算机专业的人来说，Google绝对是一个很好的东西，很多很好的资源都只能在外网才能够访问，但我们又常常困于VPN的低速且不安全，于是我们总会追求更快的上网体验，在看了很多的教程过后这两天我自己也尝试搭建了一个ssr用于更方便更快捷更安全的科学上网体验。在这儿写下这篇博客的目的是想为与我有同样想法的人提供一点点的帮助，自己本身比较菜，于是我追求用最简单的直白的语言描述搭建的过程，可能会有一些错误与不足，但我希望能对大家有所帮助。<br>在这篇博客里面会用到的工具有vultr服务器，shadowsocks（ss）和shadowsocksr（ssr)，xshell等工具，具体使用的方法会在以下写到。<br>下面就详细的讲解下搭建ssr的过程和注意事项。<br><a id="more"></a></p>
+<h1 id="搭建教程"><a href="#搭建教程" class="headerlink" title="搭建教程"></a>搭建教程</h1><h2 id="一、注册账号"><a href="#一、注册账号" class="headerlink" title="一、注册账号"></a>一、注册账号</h2><p>搭建这个ssr推荐使用<a href="https://www.vultr.com/" target="_blank" rel="noopener">vultr</a>的服务器。原因有两点，一是vultr全球各地有很多的机房，可以根据网络速度自由选择机房所在地，很方便；二是，vultr的计费方式是按照小时计费的，如果长时间不用是可以随时destroy掉的，很是方便还能节约钱。<br>这里先不推荐首先注册vultr的账号，应该做的是先申请一个<a href="https://www.paypal.com/c2/home" target="_blank" rel="noopener">PayPal</a>的账号,现在vultr有活动，充10美元送25美元的活动，但是只限申请账号的当天，同时必须使用PayPal支付，所以最好提前5到6天申请PayPal账号，这样的优惠就很好（不像我就没人提醒，错过了25美元的新人奖品）。<br>先申请账号，登录后充值，推荐先充10美元，就会赠送25美元，差不多可以开一年，挺划算的。</p>
+<h2 id="二、新建vps服务器"><a href="#二、新建vps服务器" class="headerlink" title="二、新建vps服务器"></a>二、新建vps服务器</h2><p>点击右上角的加号，新建一个服务器：<br><img src="/images/vps/vps-1.jpg" alt="新建服务器"><br>这里可以选择各大洲的服务器，为了降低传播延迟，尽量选择亚洲的服务器，比如新加坡和日本，但是有的博客也推荐了洛杉矶的节点。<br>日本和新加坡的节点的优势是延迟很低，大概在80到120之间，但是掉包率很高。<br>洛杉矶的节点的特点是延迟虽然高了点，大概在120到220之间，但是掉包率低，几乎不掉包。<br>其他的节点，如果感兴趣可以试一试，有推荐硅谷的节点，虽然延迟高了点，但是不容易被墙，同时也很稳定。<br>但是推荐选择东京的节点。<br>在选择服务器之前，可以先自己ping一下，看一下延迟，选择延迟低的节点，中国不同地方的延迟不一样。<br><a href="https://www.vultrcn.com/9.html" target="_blank" rel="noopener">ping的教程一</a><br><a href="https://www.vultrcn.com/2.html" target="_blank" rel="noopener">ping的教程二</a><br><img src="/images/vps/vps-4.png" alt="备份"><br>在选择系统上，直接就选择CentOS 7*64的服务器,然后选择每月5美元的套餐，因为现在2.5美元/月的套餐只支持ipv6但是现在很多地方并不支持，同时5美元/月的套餐的带宽和速度会更高一点，可以满足多人使用（3-5人）。<br><img src="/images/vps/vps-2.png" alt="新建服务器"><br>完成这两步后，可以直接点击Deploy Now就行了，其他的选择默认模式就好了。</p>
+<h2 id="三、检查IP地址是否可用"><a href="#三、检查IP地址是否可用" class="headerlink" title="三、检查IP地址是否可用"></a>三、检查IP地址是否可用</h2><p>由于政策原因可能你申请到的IP地址已经被墙了，所以在接下来一步配置服务器的时候会不是很顺利，所以提前检测你的vps是否被墙是很有必要的。这一部分我就不自己讲了，因为我发现有有两个vultr的教程在这方面写的很详细，比我也讲的更清楚，这里给出这两个博客的网址。<br><a href="https://www.vultrcn.com/4.html" target="_blank" rel="noopener">vultr中文网一</a><br><a href="https://www.vultrcn.com/11.html" target="_blank" rel="noopener">vultr中文网二</a><br>注意，在配置服务器之前一定要检测，否则后面会走很多的弯路。</p>
+<h2 id="四、配置服务器"><a href="#四、配置服务器" class="headerlink" title="四、配置服务器"></a>四、配置服务器</h2><p>配置服务器的过程也很详细，这里给出vultr中文网给出的教程，上面不仅有配置vultr的详细教程很清楚，同时还有xshell5的下载地址，很方便。但是也会有一个问题，如果xshell的版本过低话，可能出现打不开的情况，会提示你更新，但是我遇到了更新速度过慢更新失败的情况，我去官网现在，但是会让你填很多的个人信息，所觉的很是不方便，但是我发现了它官网的一个漏洞，可以绕开填写个人信息这一步。所以读者先试一下vultr官网给出的下载路径，不行的话再试我给出的方法。<br><a href="https://www.vultrcn.com/3.html" target="_blank" rel="noopener">vultr中文网三</a><br><a href="http://www.xshellcn.com/xmanager_std.html" target="_blank" rel="noopener">xshell官网下载地址</a><br>xshell官网的下载的方法是，翻到页面的最下方，然后点击”Xshell下载”，然后就能够直接下载了，很是方便。<br><img src="/images/vps/vps-3.png" alt="Xshell的下载方法"><br>补充：这里的Xshell是一款远程连接服务器的软件，通过xshell对vultr服务器的操作远比利用其本身的控制台操作要方便的很多，所以建议用xshell对服务器进行配置，与xshell相同软件还有putty，根据个人习惯选择软件使用。<br>同时在配置一定要记住你的用户名和密码，一定点击记住密码。</p>
+<h2 id="五、部署服务器"><a href="#五、部署服务器" class="headerlink" title="五、部署服务器"></a>五、部署服务器</h2><p>使用Xshell成功连接服务器之后，按照下图提示，复制命令到xshell的控制台：<br>中文版<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -O shadowsocks-libev_CN.sh https://raw.githubusercontent.com/uxh/shadowsocks_bash/master/shadowsocks-libev_CN.sh &amp;&amp; bash shadowsocks-libev_CN.sh</span><br></pre></td></tr></table></figure></p>
+<p>英文版：（如果中文版执行后出现乱码，就使用英文版）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -O shadowsocks-libev.sh https://raw.githubusercontent.com/uxh/shadowsocks_bash/master/shadowsocks-libev.sh &amp;&amp; bash shadowsocks-libev.sh</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/vps/vps-5.png" alt="部署服务器一"><br>回车过后会自动下载脚本并运行。然后会出现选择菜单，输入要进行的选项的序号后，回车继续。<br>第一步选择安装服务，输入1键入回车继续。<br><img src="/images/vps/vps-6.png" alt="部署服务器二"><br>然后按照提示依次输入ss的各项信息，然后回车继续。<br>PS：如果有信息输入错误需要更改，按住Crtl+backspace即可，直接按backspace不能删除。<br><img src="/images/vps/vps-7.png" alt="部署服务器三"><br>这里加密方式的选择有很多种，图片上的加密方式的选择是vultr官网提供的加密方式选择，你也可以选择aes-256-cfb。安装过程大概要耗时2到5分钟，这个时候你可以去泡杯茶之类的，然后点击回车结束后，将下图界面上的信息一定要记录下来，方便以后的使用。<br><img src="/images/vps/vps-8.png" alt="部署服务器四"><br>至此服务器的部署已经完成，但是为了体验更快更完美的上网体验，推荐安装TCP加速软件。<br>有两种方法，下面给出两个很好的传送门，这两篇教程已经写的很好了，所以不多赘述。<br>1.<a href="https://www.vultrcn.com/7.html" target="_blank" rel="noopener">锐速安装教程</a><br>2.<a href="https://www.vultrcn.com/5.html" target="_blank" rel="noopener">google黑科技BBR拥塞控制算法安装方法一</a><br>3.<a href="https://xiaozhou.net/enable-bbr-for-vps-2017-06-10.html" target="_blank" rel="noopener">google黑科技BBR拥塞控制算法安装方法二</a><br>至此服务器已经完全配置完成，只需要在终端安装shadowsocks的客户端即可。</p>
+<h2 id="客户端的安装及配置"><a href="#客户端的安装及配置" class="headerlink" title="客户端的安装及配置"></a>客户端的安装及配置</h2><p>这里给出ss和ssr的下载地址，具体选择看个人爱好，ss简约一点，ssr多了几个加密，据说能减少IP被墙的风险。<br>这些下载地址都是GitHub上的，自己也可以去搜。</p>
+<hr>
+<p>SSR的下载地址<br>Windows客户端的下载地址：<a href="https://github.com/shadowsocksr-backup/shadowsocksr-csharp/releases" target="_blank" rel="noopener">下载</a><br>Mac客户端下载地址：<a href="https://github.com/shadowsocksr-backup/ShadowsocksX-NG/releases" target="_blank" rel="noopener">下载</a><br>Android客户端的下载地址：<a href="https://github.com/shadowsocksr-backup/shadowsocksr-android/releases" target="_blank" rel="noopener">下载</a></p>
+<hr>
+<p>SS下载地址<br>Windows客户端的下载地址：<a href="https://github.com/shadowsocks/shadowsocks-windows/releases" target="_blank" rel="noopener">下载</a><br>Android客户端的下载地址：<a href="https://github.com/shadowsocks/shadowsocks-android/releases" target="_blank" rel="noopener">下载</a><br>Mac的下载地址暂且不知道，可以自己搜一下。</p>
+<hr>
+<p>然后这里给出两个教程，文中有具体的下载地址<br><a href="https://www.vultrcn.com/6.html" target="_blank" rel="noopener">Vultr 一键搭建酸酸 Shad0ws0cks 图文教程（推荐</a><br><a href="https://www.vultrcn.com/8.html" target="_blank" rel="noopener">Vultr 一键搭建酸酸乳 Shad0ws0cksR 图文教程</a></p>
+<hr>
+<p>下载安装完成以后就能看到这个界面<br><img src="/images/vps/vps-9.png" alt="客户端配置1"><br>只用填入前三个信息，服务器地址填入vultr的服务器的IP地址，服务器端口号填入你在部署服务器时设置的服务器端口号即可，密码是部署服务器时的密码，加密方式选择你部署服务器选择的加密方式，然后点击确定即可。<br>然后右击小飞机的图标，选择启用系统代理即可。<br><img src="/images/vps/vps-11.png" alt="客户端配置2"><br><img src="/images/vps/vps-12.png" alt="客户端配置3"><br>点击过后就能够科学上网了<br>补充一下，系统代理模式有两种，一个是pac模式和全局模式，他们的区别时pac模式是部分网页通过ss，全局模式是所有流量都通过ss模式。</p>
+<h2 id="特别感谢"><a href="#特别感谢" class="headerlink" title="特别感谢"></a>特别感谢</h2><p>这篇博客主要是借鉴两篇博客和一个教程完成，这里特别感谢一下所有的作者，这里给出他们的传送门：<br><a href="https://blog.csdn.net/weixin_42288676/article/details/80517662" target="_blank" rel="noopener">vultr/vps搭建SS/SSR教程最新完整版(2018.5.30更新</a><br><a href="http://chanchan.me/2018/02/26/vpn/" target="_blank" rel="noopener">chanchan:How to surf the Internet scientifically</a><br><a href="https://www.vultrcn.com/" target="_blank" rel="noopener">vultr中文网</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/VPS/" rel="tag"># VPS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/09/程序中引用图片和文档的存放位置“/" rel="next" title="程序中引用图片和文档的存放位置“">
+                <i class="fa fa-chevron-left"></i> 程序中引用图片和文档的存放位置“
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jiacheng</p>
+              <p class="site-description motion-element" itemprop="description">computer science technology</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#序言"><span class="nav-number">1.</span> <span class="nav-text">序言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#搭建教程"><span class="nav-number">2.</span> <span class="nav-text">搭建教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、注册账号"><span class="nav-number">2.1.</span> <span class="nav-text">一、注册账号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、新建vps服务器"><span class="nav-number">2.2.</span> <span class="nav-text">二、新建vps服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、检查IP地址是否可用"><span class="nav-number">2.3.</span> <span class="nav-text">三、检查IP地址是否可用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、配置服务器"><span class="nav-number">2.4.</span> <span class="nav-text">四、配置服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、部署服务器"><span class="nav-number">2.5.</span> <span class="nav-text">五、部署服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端的安装及配置"><span class="nav-number">2.6.</span> <span class="nav-text">客户端的安装及配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特别感谢"><span class="nav-number">2.7.</span> <span class="nav-text">特别感谢</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiacheng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

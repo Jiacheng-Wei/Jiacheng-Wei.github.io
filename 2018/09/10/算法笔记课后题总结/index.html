@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Codingcheng">
 <meta property="og:description" content="学了将近一年的计算机专业，懵懵懂懂的第一学期，完全不知道方向，然后是渐渐有感觉的第二学期。到了大三，相比之前，自己的方向更加的明了和清晰，同时在学习了这么多以后发现，算法才是计算机的核心，编程能力是计算机的基础，独立解决问题的能力是计算机领域的基本要求，保持对新鲜技术和事物的兴趣是计算机这一新兴领域的基本素质。这篇博客是在做算法笔记课后题时的一点感悟和总结，会保持不断的更新。这样做，一是时刻总结让">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-01T14:22:32.541Z">
+<meta property="og:updated_time" content="2018-10-02T01:29:32.018Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法笔记课后题总结">
 <meta name="twitter:description" content="学了将近一年的计算机专业，懵懵懂懂的第一学期，完全不知道方向，然后是渐渐有感觉的第二学期。到了大三，相比之前，自己的方向更加的明了和清晰，同时在学习了这么多以后发现，算法才是计算机的核心，编程能力是计算机的基础，独立解决问题的能力是计算机领域的基本要求，保持对新鲜技术和事物的兴趣是计算机这一新兴领域的基本素质。这篇博客是在做算法笔记课后题时的一点感悟和总结，会保持不断的更新。这样做，一是时刻总结让">
@@ -299,8 +299,8 @@
             
                 <span class="post-updated">
                  &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2018-10-01T22:22:32+08:00" content="2018-10-01">
-                2018-10-01
+              <time itemprop="dateUpdated" datetime="2018-10-02T09:29:32+08:00" content="2018-10-02">
+                2018-10-02
               </time>
                 </span>
             
@@ -384,6 +384,9 @@
 <p><16>进制间转换的通用思路是，先转换成十进制然后再转化成其他进制。</16></p>
 <p><17>字符串的结束符是”\0”的ASCII码是0，即空字符NULL，占用一个字符位，因此开字符串的时候千万要记得字符数组的长度一定要比实际存储字符串的长度至少多1。注意：int型组的末尾不需要加\0，只有char型数组需要。还需要注意\0跟空格不是同一个东西，空格的ASCII码是32，切勿混淆。</17></p>
 <p><18>如果不使用scanf函数的%s格式或gets函数输入字符串（例如使用getchar），一定要在输入的每个字符串后加入”\0”,否则printf和puts输出字符串会因为无法识别字符串末尾而输出一大堆乱码。（例题见第三章第六节第一题）</18></p>
+<p><19>对于字符串的输入，有了两种方式一个是scanf(“%s”,str)另一个是gets(str)的形式，对于这两种形式，其不同之处是，scanf形式当检测到输入字符串有空格时就会停止输入，但是gets是识别到换行符\n才会结束输入，所以gets可以用来输入带有空格的字符串，在题目文章或句子格式变换时使用，同时使用gets形式需要注意的是，当gets前面有一个scanf形式是，要用getchar接受scanf后面的换行符，这样才不会出现输入异常。puts用来输出一行字符串，即将一维数组（或二维数组的一维）在界面上输出，并紧跟一个换行符。</19></p>
+<p><20>接上，对于输入字符串来说，要判断输入是否结束有scanf和gets两种方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">while(scanf(&quot;%s&quot;,str)!=EOF)</span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">while(gets(str)!=NULL)</span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></20></p>
+<p>注意二者的返回结束标志不同。</p>
 
       
     </div>

@@ -82,14 +82,14 @@
 <meta name="description" content="开始刷LeetCode了，思考了很多东西，学习所有东西都不要畏惧，刚入门都是会很痛苦的，但是多总结，多思考，多练习，我认为总会从陌生到熟悉的，所以晚开始补入早开始，从今天开始刷LeetCode，我相信只要坚持一个月后回头看就不会恐慌了，加油少年！！！这篇博客主要记录刷题过程中遇到的问题。">
 <meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode总结“">
-<meta property="og:url" content="http://yoursite.com/2018/10/23/leetcode总结“/index.html">
+<meta property="og:title" content="leetcode总结">
+<meta property="og:url" content="http://yoursite.com/2018/10/23/leetcode总结/index.html">
 <meta property="og:site_name" content="Codingcheng">
 <meta property="og:description" content="开始刷LeetCode了，思考了很多东西，学习所有东西都不要畏惧，刚入门都是会很痛苦的，但是多总结，多思考，多练习，我认为总会从陌生到熟悉的，所以晚开始补入早开始，从今天开始刷LeetCode，我相信只要坚持一个月后回头看就不会恐慌了，加油少年！！！这篇博客主要记录刷题过程中遇到的问题。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-23T12:29:10.331Z">
+<meta property="og:updated_time" content="2018-10-24T00:40:34.027Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode总结“">
+<meta name="twitter:title" content="leetcode总结">
 <meta name="twitter:description" content="开始刷LeetCode了，思考了很多东西，学习所有东西都不要畏惧，刚入门都是会很痛苦的，但是多总结，多思考，多练习，我认为总会从陌生到熟悉的，所以晚开始补入早开始，从今天开始刷LeetCode，我相信只要坚持一个月后回头看就不会恐慌了，加油少年！！！这篇博客主要记录刷题过程中遇到的问题。">
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/23/leetcode总结“/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/23/leetcode总结/"/>
 
 
 
 
 
-  <title>leetcode总结“ | Codingcheng</title>
+  <title>leetcode总结 | Codingcheng</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/23/leetcode总结“/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/23/leetcode总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiacheng">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">leetcode总结“</h1>
+          <h1 class="post-title" itemprop="name headline">leetcode总结</h1>
         
 
         <div class="post-meta">
@@ -299,8 +299,8 @@
             
                 <span class="post-updated">
                  &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2018-10-23T20:29:10+08:00" content="2018-10-23">
-                2018-10-23
+              <time itemprop="dateUpdated" datetime="2018-10-24T08:40:34+08:00" content="2018-10-24">
+                2018-10-24
               </time>
                 </span>
             
@@ -366,7 +366,8 @@
 
       
         <p>开始刷LeetCode了，思考了很多东西，学习所有东西都不要畏惧，刚入门都是会很痛苦的，但是多总结，多思考，多练习，我认为总会从陌生到熟悉的，所以晚开始补入早开始，从今天开始刷LeetCode，我相信只要坚持一个月后回头看就不会恐慌了，加油少年！！！这篇博客主要记录刷题过程中遇到的问题。<br><a id="more"></a></p>
-<p><1> 整型的最大值和最小值的问题<br>1.INT_MAX,INT_MIN数值大小<br>因为int占4字节32位，根据二进制编码的规则，INT_MAX = 2^31-1，INT_MIN= -2^31.C/C++中，所有超过该限值的数，都会出现溢出，出现warning，但是并不会出现error。如果想表示的整数超过了该限值，可以使用长整型long long 占8字节64位。<br>2.关于INT_MAX INT_MIN的运算<br>由于二进制编码按原码、补码和反码的规则进行运算，所有程序中对INT_MAX和INT_MIN的运算应当格外注意，在出现溢出的时候，不遵循数学规则。<br>INT_MAX + 1 = INT_MIN<br>INT_MIN - 1 = INT_MAX<br>abs(INT_MIN) = INT_MIN<br>比较有趣的是，INT_MAX + 1 &lt; INT_MAX， INT_MIN - 1 &gt; INT_MIN, abs(INT_MIN) &lt; 0.</1></p>
+<p>LeetCode-7<br>整型的最大值和最小值的问题<br>1.INT_MAX,INT_MIN数值大小<br>因为int占4字节32位，根据二进制编码的规则，INT_MAX = 2^31-1，INT_MIN= -2^31.C/C++中，所有超过该限值的数，都会出现溢出，出现warning，但是并不会出现error。如果想表示的整数超过了该限值，可以使用长整型long long 占8字节64位。<br>2.关于INT_MAX INT_MIN的运算<br>由于二进制编码按原码、补码和反码的规则进行运算，所有程序中对INT_MAX和INT_MIN的运算应当格外注意，在出现溢出的时候，不遵循数学规则。<br>INT_MAX + 1 = INT_MIN<br>INT_MIN - 1 = INT_MAX<br>abs(INT_MIN) = INT_MIN<br>比较有趣的是，INT_MAX + 1 &lt; INT_MAX， INT_MIN - 1 &gt; INT_MIN, abs(INT_MIN) &lt; 0.<br>3.此题的题意是将整数翻转，当翻转过后可能会出现超界问题，需要用到整形的最大值和最小值问题，具体的判断是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if (rev&gt;INT_MAX/10||(rev==INT_MAX/10&amp;&amp;pop&gt;7)) return 0;</span><br><span class="line">if (rev&lt;INT_MIN/10||(rev==INT_MIN/10&amp;&amp;pop&lt;-8)) return 0;</span><br></pre></td></tr></table></figure></p>
+<p>其中变量rev是翻转过程中的数，pop是取的最近一位的数。</p>
 <hr>
 
       

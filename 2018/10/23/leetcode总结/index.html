@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Codingcheng">
 <meta property="og:description" content="开始刷LeetCode了，思考了很多东西，学习所有东西都不要畏惧，刚入门都是会很痛苦的，但是多总结，多思考，多练习，我认为总会从陌生到熟悉的，所以晚开始补入早开始，从今天开始刷LeetCode，我相信只要坚持一个月后回头看就不会恐慌了，加油少年！！！这篇博客主要记录刷题过程中遇到的问题。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-26T08:03:59.121Z">
+<meta property="og:updated_time" content="2018-10-28T14:39:00.280Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode总结">
 <meta name="twitter:description" content="开始刷LeetCode了，思考了很多东西，学习所有东西都不要畏惧，刚入门都是会很痛苦的，但是多总结，多思考，多练习，我认为总会从陌生到熟悉的，所以晚开始补入早开始，从今天开始刷LeetCode，我相信只要坚持一个月后回头看就不会恐慌了，加油少年！！！这篇博客主要记录刷题过程中遇到的问题。">
@@ -299,8 +299,8 @@
             
                 <span class="post-updated">
                  &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2018-10-26T16:03:59+08:00" content="2018-10-26">
-                2018-10-26
+              <time itemprop="dateUpdated" datetime="2018-10-28T22:39:00+08:00" content="2018-10-28">
+                2018-10-28
               </time>
                 </span>
             
@@ -371,6 +371,10 @@
 <hr>
 <p>LeetCode-14<br>题目的问题是寻找几个字符串最长的相同前缀，我第一用STL库写所以不熟练，但是写了过后也没有觉得有多难，所以学习新东西的时候自己一定要有信心，all is well。<br>然后遇到的问题是，始终输出不了函数的返回值，经过调了很久，才发现问题的所在，就是在string类型的应用上：<br>当定义string类型的变量时，要在字符串后面添加元素时只能用push_back(),不能用“+”和“append()”，也不能直接用“=”赋值，我就犯了这个错误，因为在延长字符串时，后面的存储空间还没有给出来，所以没有地址，所以不要傻不拉几的用“=”一个一个给字符串元素赋值。<br>这里给一个详细网址里面有string类型封装好的所有函数的介绍<a href="https://www.cnblogs.com/c1299401227/p/5370685.html" target="_blank" rel="noopener">string</a>。</p>
 <hr>
+<p>LeetCode-35<br>题目要求解决的问题是：search insert position<br>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
+<p>You may assume no duplicates in the array.</p>
+<p>我做这道题的时候用的方法是二分法，刚开始的时候，很古板的套用二分法的方法，然后对书上二分法的理解也不深刻，所以总是不能包括所有的情况，但是经过回顾了二分法的方法以后，找到了一点规律，这个题应该套用改进型的“寻找第一个大于等于x的值”的情况。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">int searchInsert(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">    vector&lt;int&gt;::iterator left;</span><br><span class="line">    vector&lt;int&gt;::iterator right;</span><br><span class="line">    vector&lt;int&gt;::iterator mid;</span><br><span class="line">    left=nums.begin();</span><br><span class="line">    right=nums.end();</span><br><span class="line">    while(left&lt;right)</span><br><span class="line">    &#123;</span><br><span class="line">        mid=left+(right-left)/2;//为了防止left+right太大超界所以用这种方法 </span><br><span class="line">        //if(target==*mid) return mid-nums.begin();</span><br><span class="line">        else if(target&gt;*mid)</span><br><span class="line">        &#123;</span><br><span class="line">            left=mid+1;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            right=mid;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return left-nums.begin();</span><br><span class="line">    //注意这里返回的不是mid的index二是left指针的index，因为当循环执行到结束的时候有三种情况:一种是在最右端点的情//况，此时又分为target值大于最右边的值，另一个是target等于最右边的值，这个时候因为有left=mid+1，所以两种情况//都能满足；要插入的值在中间位置时又有两种情况：一是target的值和其中一个值相等，由于循环终止条件是left&lt;right，//所以这个left是会和mid的位置重合于相同的这个值上，所以解决问题；另一种是，这个值在两个数中间时，mid最终会停留//在小于target的值的位置上，当left+1时就满足条件。三是在左端点的情况，左端点时无论哪种情况三个指针都将重合于左//端的位置，所以解决问题。</span><br><span class="line">&#125;   </span><br><span class="line">//需要仔细总结二分法的精髓，分三种情况，这种情况属于如何找到第一个大于等于target的值的位置。</span><br></pre></td></tr></table></figure></p>
+<p>需要对二分法理解更深入，不过真的二分法的时间复杂度真的低，竟然只运行了四秒，强。所以熟练掌握查找的方法很重要的。</p>
 
       
     </div>

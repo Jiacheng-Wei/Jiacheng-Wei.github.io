@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="language," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="introductionMFC很早之前用到过，是在vs2017的环境下使用的，在上次使用的过程中，对MFC的框架已经大致熟悉，通过图形界面，添加控件，对每一个控件生成一个函数对象，再在函数对象里面对控件的功能进行编程，以实现每个空间的功能。这次通过对des算法的学习，也学到了跟多MFC的使用方法和经验。">
+<meta name="keywords" content="language">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记mfc使用经历">
+<meta property="og:url" content="http://yoursite.com/2019/03/31/记mfc使用经历/index.html">
+<meta property="og:site_name" content="Codingcheng">
+<meta property="og:description" content="introductionMFC很早之前用到过，是在vs2017的环境下使用的，在上次使用的过程中，对MFC的框架已经大致熟悉，通过图形界面，添加控件，对每一个控件生成一个函数对象，再在函数对象里面对控件的功能进行编程，以实现每个空间的功能。这次通过对des算法的学习，也学到了跟多MFC的使用方法和经验。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-31T06:17:21.981Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="记mfc使用经历">
+<meta name="twitter:description" content="introductionMFC很早之前用到过，是在vs2017的环境下使用的，在上次使用的过程中，对MFC的框架已经大致熟悉，通过图形界面，添加控件，对每一个控件生成一个函数对象，再在函数对象里面对控件的功能进行编程，以实现每个空间的功能。这次通过对des算法的学习，也学到了跟多MFC的使用方法和经验。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/31/记mfc使用经历/"/>
+
+
+
+
+
+  <title>记mfc使用经历 | Codingcheng</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Codingcheng</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">书山有路勤为径，学海无涯苦作舟</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/31/记mfc使用经历/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiacheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Codingcheng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">记mfc使用经历</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-31T09:21:43+08:00">
+                2019-03-31
+              </time>
+            
+            
+                <span class="post-updated">
+                 &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2019-03-31T14:17:21+08:00" content="2019-03-31">
+                2019-03-31
+              </time>
+                </span>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="introduction"><a href="#introduction" class="headerlink" title="introduction"></a>introduction</h1><p>MFC很早之前用到过，是在vs2017的环境下使用的，在上次使用的过程中，对MFC的框架已经大致熟悉，通过图形界面，添加控件，对每一个控件生成一个函数对象，再在函数对象里面对控件的功能进行编程，以实现每个空间的功能。这次通过对des算法的学习，也学到了跟多MFC的使用方法和经验。<br><a id="more"></a></p>
+<h1 id="MFC使用之文本框的使用"><a href="#MFC使用之文本框的使用" class="headerlink" title="MFC使用之文本框的使用"></a>MFC使用之文本框的使用</h1><p>在这次实验的过程中，我们需要用到MFC的文本框控件，需要从文本中读取数据，然后更新文本框的数据。为了实现这一功能，我认为要知道以下几点：</p>
+<ol>
+<li>最好设置一个全局变量用以存放从文本框读取的数据，设置全局变量的好处是，能够在不同函数内对全局变量进行操作。</li>
+<li>从编辑框输入数据后，需要调用UpdateData(TURE);进行数据交换，这样用GetDlgItem（）就可以获取内容了；如果要写入数据，先SetDlgItem（），之后再调用UpdateData(FLASE);进行数据交换这样才回把数据写入到编辑框；<br>UpdateData();是对话框的更新函数，当参数为TURE的时候读取数据，FLASE的时候写入数据。<br>编辑框内容改变后，程序和这个编辑框对应的变量并不改变，直到用UpdateData(TURE)；同样，变量改变后，编辑框也不会反应出来，直到调用UpdateData(FLASE)。<br>要注意的是：<1> 从文本框读下来的还是更新文本框的数据都应该是CString类型的数据。</1></li>
+</ol>
+<h1 id="MFC使用之打开文件浏览器"><a href="#MFC使用之打开文件浏览器" class="headerlink" title="MFC使用之打开文件浏览器"></a>MFC使用之打开文件浏览器</h1><p>在使用的时候，先创建一个button控件，然后对该控件添加事件，对本机文件操作，MFC组件有一个专门的封装类CFileDialog，而这个类对应的头文件是afxdlgs.h，该类对文件操作的功能十分的丰富，如：</p>
+<ul>
+<li>CString CFileDialog::GetPathName( ) 得到完整的文件名，包括目录名和扩展名如：c:\test\test1.txt</li>
+<li>CString CFileDialog::GetFileName( ) 得到完整的文件名，包括扩展名如：test1.txt</li>
+<li>CString CFileDialog::GetExtName( ) 得到完整的文件扩展名，如：txt</li>
+<li>CString CFileDialog::GetFileTitle ( ) 得到完整的文件名，不包括目录名和扩展名如：test1</li>
+<li>POSITION CFileDialog::GetStartPosition( ) 对于选择了多个文件的情况得到第一个文件位置。</li>
+<li>CString CFileDialog::GetNextPathName( POSITION&amp; pos ) 对于选择了多个文件的情况得到下一个文件位置，并同时返回当前文件名。但必须已经调用过POSITION CFileDialog::GetStartPosition( )来得到最初的POSITION变量。</li>
+</ul>
+<p>而需要注意的是：首先构造一个对象并提供相应的参数，构造函数原型如下：<br>CFileDialog::CFileDialog( BOOL bOpenFileDialog, LPCTSTR lpszDefExt = NULL, LPCTSTR lpszFileName = NULL, DWORD dwFlags = OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, LPCTSTR lpszFilter = NULL, CWnd* pParentWnd = NULL );参数意义如下：</p>
+<ul>
+<li>bOpenFileDialog 为TRUE则显示打开对话框，为FALSE则显示保存对话文件对话框。</li>
+<li>lpszDefExt 指定默认的文件扩展名。</li>
+<li>lpszFileName 指定默认的文件名。</li>
+<li>dwFlags 指明一些特定风格。</li>
+<li>lpszFilter 是最重要的一个参数，它指明可供选择的文件类型和相应的扩展名。参数格式如：</li>
+</ul>
+<p>“Chart Files (<em>.xlc)|</em>.xlc|Worksheet Files (<em>.xls)|</em>.xls|Data Files (<em>.xlc;</em>.xls)|<em>.xlc; </em>.xls|All Files (<em>.</em>)|<em>.</em>||”;文件类型说明和扩展名间用 | 分隔，同种类型文件的扩展名间可以用 ; 分割，每种文件类型间用 | 分隔，末尾用 || 指明。</p>
+<p>因此我添加了如下代码：<br>添加事件后写下该部分代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   // TODO: Add your control notification handler code here</span><br><span class="line">CString Filename;//保存路径</span><br><span class="line">CString Filetitle;//保存文件名</span><br><span class="line">CFileDialog opendlg (TRUE,_T(&quot;*&quot;),_T(&quot;*.txt&quot;),OFN_OVERWRITEPROMPT, _T(&quot;所有文件(*.*;)|*.*||&quot;),NULL);</span><br><span class="line">if (opendlg.DoModal()==IDOK)</span><br><span class="line">&#123;</span><br><span class="line">	Filename=opendlg.GetPathName();</span><br><span class="line">	Filetitle=opendlg.GetFileTitle();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>需要注意的是：读取的路径名是CString类型的，因此在后面的使用过程中需要将CString类型转换成char* 类型。<br>该部分参考了一个写的比较好的博客：<a href="https://www.cnblogs.com/onlyan/articles/2556285.html" target="_blank" rel="noopener">参考1</a></p>
+<h1 id="MFC之对文件的读写操作"><a href="#MFC之对文件的读写操作" class="headerlink" title="MFC之对文件的读写操作"></a>MFC之对文件的读写操作</h1><p>MFC的封装的功能很丰富，对文件的操作，MFC内部也进行了封装，CStdioFile就是这样一个类，在使用的时候先初始化一个对象，然后使用里面的函数对文件进行增删改查的操作。我认为最重要的还是读写操作。具体的方法是初始化一个对象，通过对象函数open()打开文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">virtual BOOL Open( LPCTSTR lpszFileName, UINT nOpenFlags, CFileException* pError = NULL );</span><br><span class="line">/*lpszFileName 表示路径所需文件的字符串。 该路径可以是相对路径，也可以是绝对路径*/</span><br><span class="line">/*nOpenFlags 共享和访问模式。 因此，在打开文件时，指定该操作。 您可以合并选项使用按位或(|)运算符*/</span><br><span class="line">/*pError 要接收失败的操作状态的现有文件异常对象的指针*/</span><br></pre></td></tr></table></figure></p>
+<p>访问的方式有：</p>
+<ul>
+<li>CFile::typeText：以文本文件的形式打开文件</li>
+<li>CFile::typeBinary：以二进制文件的形式打开文件</li>
+<li>CFile::modeCreate：如果指定文件名的文件不存在，则新建文件；如果文件存在并且没有设置CFile::modeNoTruncate标志，则清空文件。</li>
+<li>CFile::modeNoTruncate：如果文件存在，不把它的长度删除为0（即不清空文件中的数据）。</li>
+<li>CFile::modeRead：以只读方式打开文件</li>
+<li>CFile::modeReadWrite：以可读可写方式打开文件</li>
+<li>CFile::modeWrite：以只写方式打开文件</li>
+<li>CFile::shareDenyNone：文件打开后，不禁止其他进程对文件的读写操作</li>
+<li>CFile::shareExclusive：文件打开后，禁止其他进程对文件的读写操作</li>
+<li>CFile::shareDenyRead：文件打开后，禁止其他进程对文件的读操作</li>
+<li>CFile::shareDenyWrite：文件打开后，禁止其他进程对文件的写操作</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">file.Open(desroute,CFile::modeCreate|CFile::modeWrite);</span><br><span class="line">//这种写法是文本存在则读，不存在则创建</span><br></pre></td></tr></table></figure>
+<p>我认为这里需要注意的地方是：打开路径是字符串形式，不是CString形式，要注意转化。<br>然后就是读写文本里面的内容了，使用读文件内容的函数即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">file.ReadString(strline)//读</span><br><span class="line">file.WriteString(m_ciphertext);//写</span><br></pre></td></tr></table></figure></p>
+<p>需要注意的是读写的内容都是CString类型的。<br>具体可以参看一下这篇博客：<a href="https://blog.csdn.net/qq_37236745/article/details/78727010" target="_blank" rel="noopener">参考2</a>，<a href="https://blog.csdn.net/u012987386/article/details/71089178" target="_blank" rel="noopener">参考3</a></p>
+<h1 id="MFC之变量类型转化"><a href="#MFC之变量类型转化" class="headerlink" title="MFC之变量类型转化"></a>MFC之变量类型转化</h1><p>这个实验最烦的就是类型转化了，我搞了好久都还是搞不定Unicode码转化为ascll码，放弃了。但是要注意的是CString类型转化成char* 类型应该是转化为Unicode表示，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">char* str = (char*)(LPCTSTR)m_ciphertext;</span><br></pre></td></tr></table></figure></p>
+<p>如这样，使用(LPCTSTR)进行表示，然后更具体的研究不是很深刻但是需要使用，而且查了资料似乎都是这样，不过会提到<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Format(_T(&quot;%s&quot;),char*型)</span><br></pre></td></tr></table></figure></p>
+<p>的这种转换方式，_T也表示转化为Unicode码，但其中还有一些注意事项，见博客：<a href="https://blog.csdn.net/GoForwardToStep/article/details/53079967" target="_blank" rel="noopener">参考4</a>。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/language/" rel="tag"># language</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/12/学习观笔记/" rel="next" title="学习观笔记">
+                <i class="fa fa-chevron-left"></i> 学习观笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jiacheng</p>
+              <p class="site-description motion-element" itemprop="description">computer science technology</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MFC使用之文本框的使用"><span class="nav-number">2.</span> <span class="nav-text">MFC使用之文本框的使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MFC使用之打开文件浏览器"><span class="nav-number">3.</span> <span class="nav-text">MFC使用之打开文件浏览器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MFC之对文件的读写操作"><span class="nav-number">4.</span> <span class="nav-text">MFC之对文件的读写操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MFC之变量类型转化"><span class="nav-number">5.</span> <span class="nav-text">MFC之变量类型转化</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiacheng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

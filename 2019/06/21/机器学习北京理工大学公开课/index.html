@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Codingcheng">
 <meta property="og:description" content="机器学习北京大学公开课笔记机器学习分类 监督学习（Supervised Learning） 无监督学习（Unsupervised Learning） 强化学习（Reinforcement Learning，增强学习） 半监督学习（Semi-supervised Learning） 深度学习（Deep Learning）">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-21T12:15:38.794Z">
+<meta property="og:updated_time" content="2019-06-23T10:53:24.183Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习北京理工大学公开课">
 <meta name="twitter:description" content="机器学习北京大学公开课笔记机器学习分类 监督学习（Supervised Learning） 无监督学习（Unsupervised Learning） 强化学习（Reinforcement Learning，增强学习） 半监督学习（Semi-supervised Learning） 深度学习（Deep Learning）">
@@ -299,8 +299,8 @@
             
                 <span class="post-updated">
                  &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2019-06-21T20:15:38+08:00" content="2019-06-21">
-                2019-06-21
+              <time itemprop="dateUpdated" datetime="2019-06-23T18:53:24+08:00" content="2019-06-23">
+                2019-06-23
               </time>
                 </span>
             
@@ -448,8 +448,7 @@
 </tr>
 </tbody>
 </table>
-<p>###回归任务</p>
-<table>
+<h3 id="回归任务"><a href="#回归任务" class="headerlink" title="回归任务"></a>回归任务</h3><table>
 <thead>
 <tr>
 <th style="text-align:center">回归模型</th>
@@ -657,6 +656,29 @@
 </tr>
 </tbody>
 </table>
+<h2 id="聚类之K-Means-31省市居民家庭消费调查"><a href="#聚类之K-Means-31省市居民家庭消费调查" class="headerlink" title="聚类之K-Means+31省市居民家庭消费调查"></a>聚类之K-Means+31省市居民家庭消费调查</h2><p>###K-Means聚类算法<br>K-Means算法以K为参数，把n个对象分成k个簇，使簇内具有较高的相似度，而簇间的相似度较低。<br>步骤：</p>
+<ul>
+<li>随机选择k个点作为初始的聚类中心</li>
+<li>对于剩下的点，根据其与聚类中心的距离，将其归入最近的簇。</li>
+<li>对每个簇，计算所有点的均值作为新的聚类中心。</li>
+<li>重复2、3直到聚类中心不再发生变化。</li>
+</ul>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//1、建立工程，导入sklearn相关包</span><br><span class="line">import numpy as np</span><br><span class="line">from sklearn.cluster import KMeans</span><br><span class="line">//2、加载数据，创建K-means算法实例，并进行训练，获得标签</span><br><span class="line">if __name__==&apos;__main__&apos;:</span><br><span class="line">    data,cityName = loadData(&apos;city.txt&apos;)//读取数据</span><br><span class="line">    km = KMeans(n_cluster=3)//计算</span><br><span class="line">    label = km.fit_predict(data)//计算</span><br><span class="line">    expenses=np.sum(km.cluster_centers_,axis=1)//数字加和</span><br><span class="line">    #print(expenses)</span><br><span class="line">    CityCluster=[[],[],[]]</span><br><span class="line">    for i in range(len(cityName)):</span><br><span class="line">        CityCluster=[label[i]].append(cityName[i])</span><br><span class="line">    for i in range(len(CityCluster)):</span><br><span class="line">        print(&quot;Expenses:%.2f&quot;% expenses[i])</span><br><span class="line">        print(CityCluster[i])</span><br></pre></td></tr></table></figure>
+<p>调用K-Means方法所需要的参数：</p>
+<ul>
+<li>n_clusters：用于指定聚类中心的个数</li>
+<li>init：初始聚类中心的初始化方法</li>
+<li>max_iter：最大的迭代次数</li>
+<li>一般调用时只用给出n_clusters即可，init默认是K-Means++，max_iter默认是300</li>
+</ul>
+<p>其他参数：</p>
+<ul>
+<li>data：加载的数据</li>
+<li>label：聚类后各数据所属的标签</li>
+<li>fit_predict()：计算簇中心以及为簇分配序号</li>
+</ul>
+<p>loadData函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def loadData(filePath):</span><br><span class="line">    fr=open(filePath,&apos;r+&apos;)</span><br><span class="line">    lines=fr.readlines()</span><br><span class="line">    retData =[]</span><br><span class="line">    retCityName =[]</span><br><span class="line">    for line in lines:</span><br><span class="line">        items = line.strip().split(&quot;,&quot;);</span><br><span class="line">        retCityName.append(items[0])</span><br><span class="line">        retData.append(float(items[i]))</span><br><span class="line">    for i in range(1,len(items))</span><br><span class="line">        return retData,retCityName</span><br></pre></td></tr></table></figure></p>
+<h3 id="拓展和改进"><a href="#拓展和改进" class="headerlink" title="拓展和改进"></a>拓展和改进</h3><p>计算两条数据相似性时，Sklearn和K-Means默认用的是欧式距离。虽然还有余弦相似度，马氏距离等多种方法，但没有设定计算距离方法的参数。因此只能通过修改K-Means的源代码。</p>
 
       
     </div>
@@ -687,8 +709,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/20/数据库考研复习第一章/" rel="next" title="第一章绪论">
-                <i class="fa fa-chevron-left"></i> 第一章绪论
+              <a href="/2019/06/20/数据结构考研复习第一章/" rel="next" title="数据结构考研复习第一章绪论">
+                <i class="fa fa-chevron-left"></i> 数据结构考研复习第一章绪论
               </a>
             
           </div>
@@ -827,7 +849,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#机器学习北京大学公开课笔记"><span class="nav-number">1.</span> <span class="nav-text">机器学习北京大学公开课笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#机器学习分类"><span class="nav-number">1.1.</span> <span class="nav-text">机器学习分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-Scikit-learn"><span class="nav-number">1.2.</span> <span class="nav-text">Python Scikit-learn</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.2.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用函数"><span class="nav-number">1.2.2.</span> <span class="nav-text">常用函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理论知识深入资料"><span class="nav-number">1.3.</span> <span class="nav-text">理论知识深入资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sklearn标准库的基本功能"><span class="nav-number">1.4.</span> <span class="nav-text">Sklearn标准库的基本功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分类模型"><span class="nav-number">1.4.1.</span> <span class="nav-text">分类模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚类任务"><span class="nav-number">1.4.2.</span> <span class="nav-text">聚类任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#降维任务"><span class="nav-number">1.4.3.</span> <span class="nav-text">降维任务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无监督学习"><span class="nav-number">1.5.</span> <span class="nav-text">无监督学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">1.5.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点"><span class="nav-number">1.5.2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚类"><span class="nav-number">1.5.3.</span> <span class="nav-text">聚类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念-1"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#距离计算方法"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">距离计算方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sklearn-cluster"><span class="nav-number">1.5.3.3.</span> <span class="nav-text">sklearn.cluster</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#降维"><span class="nav-number">1.5.4.</span> <span class="nav-text">降维</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念-2"><span class="nav-number">1.5.4.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sklearn-decomposition"><span class="nav-number">1.5.4.2.</span> <span class="nav-text">sklearn.decomposition</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#机器学习北京大学公开课笔记"><span class="nav-number">1.</span> <span class="nav-text">机器学习北京大学公开课笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#机器学习分类"><span class="nav-number">1.1.</span> <span class="nav-text">机器学习分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-Scikit-learn"><span class="nav-number">1.2.</span> <span class="nav-text">Python Scikit-learn</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.2.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用函数"><span class="nav-number">1.2.2.</span> <span class="nav-text">常用函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理论知识深入资料"><span class="nav-number">1.3.</span> <span class="nav-text">理论知识深入资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sklearn标准库的基本功能"><span class="nav-number">1.4.</span> <span class="nav-text">Sklearn标准库的基本功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分类模型"><span class="nav-number">1.4.1.</span> <span class="nav-text">分类模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回归任务"><span class="nav-number">1.4.2.</span> <span class="nav-text">回归任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚类任务"><span class="nav-number">1.4.3.</span> <span class="nav-text">聚类任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#降维任务"><span class="nav-number">1.4.4.</span> <span class="nav-text">降维任务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无监督学习"><span class="nav-number">1.5.</span> <span class="nav-text">无监督学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">1.5.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点"><span class="nav-number">1.5.2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚类"><span class="nav-number">1.5.3.</span> <span class="nav-text">聚类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念-1"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#距离计算方法"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">距离计算方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sklearn-cluster"><span class="nav-number">1.5.3.3.</span> <span class="nav-text">sklearn.cluster</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#降维"><span class="nav-number">1.5.4.</span> <span class="nav-text">降维</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念-2"><span class="nav-number">1.5.4.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sklearn-decomposition"><span class="nav-number">1.5.4.2.</span> <span class="nav-text">sklearn.decomposition</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚类之K-Means-31省市居民家庭消费调查"><span class="nav-number">1.6.</span> <span class="nav-text">聚类之K-Means+31省市居民家庭消费调查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码："><span class="nav-number">1.6.1.</span> <span class="nav-text">代码：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拓展和改进"><span class="nav-number">1.6.2.</span> <span class="nav-text">拓展和改进</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

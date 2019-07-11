@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Codingcheng">
 <meta property="og:description" content="复习要点 熟练掌握线性表的各种基本操作（基于两种存储结构），注重积累和培养动手能力。 考场上应尽力表达出算法的思想和步骤，不必拘泥于细节。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-09T13:25:24.000Z">
+<meta property="og:updated_time" content="2019-07-11T01:17:14.221Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构考研复习第二章线性表">
 <meta name="twitter:description" content="复习要点 熟练掌握线性表的各种基本操作（基于两种存储结构），注重积累和培养动手能力。 考场上应尽力表达出算法的思想和步骤，不必拘泥于细节。">
@@ -299,8 +299,8 @@
             
                 <span class="post-updated">
                  &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2019-07-09T21:25:24+08:00" content="2019-07-09">
-                2019-07-09
+              <time itemprop="dateUpdated" datetime="2019-07-11T09:17:14+08:00" content="2019-07-11">
+                2019-07-11
               </time>
                 </span>
             
@@ -432,8 +432,11 @@
 <li>按值查找</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int LocateElem(SqList L,ElemType e)&#123;</span><br><span class="line">    //本算法实现查找顺序表值为e的元素，如果查找成功，返回元素位序，否则返回0</span><br><span class="line">    int i;</span><br><span class="line">    for(i=0;i&lt;L.length;i++)&#123;</span><br><span class="line">        if(L.data[i]==e) return i+1; //下标为i的元素值等于e，返回其位序i+1</span><br><span class="line">    &#125;</span><br><span class="line">    return 0; //退出循环，说明查找失败</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>时间复杂度：<br>    最好情况：元素在表头，O(1);<br>    最坏情况：元素在表尾，O(n);<br>    平均情况：O(n);</p>
-
+<p>时间复杂度：</p>
+<pre><code>最好情况：元素在表头，O(1);
+最坏情况：元素在表尾，O(n);
+平均情况：O(n);
+</code></pre>
       
     </div>
     

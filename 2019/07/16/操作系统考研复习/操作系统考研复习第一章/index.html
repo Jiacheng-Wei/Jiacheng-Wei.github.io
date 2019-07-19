@@ -89,7 +89,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/OSreview/中断.png">
 <meta property="og:image" content="http://yoursite.com/images/OSreview/系统调用执行过程.png">
-<meta property="og:updated_time" content="2019-07-19T05:55:47.738Z">
+<meta property="og:updated_time" content="2019-07-19T06:02:42.976Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统考研复习第一章 计算机系统概述">
 <meta name="twitter:description" content="该章内容通常以选择题的形式考查，考查重点是操作系统的功能、运行环境和提供的服务。注意，在操作系统学习的过程中，最重要的是理解和学习操作系统是如何控制和协调处理机、存储器、设备和文件的，而接口和扩充机器只需了解即可。">
@@ -302,7 +302,7 @@
             
                 <span class="post-updated">
                  &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2019-07-19T13:55:47+08:00" content="2019-07-19">
+              <time itemprop="dateUpdated" datetime="2019-07-19T14:02:42+08:00" content="2019-07-19">
                 2019-07-19
               </time>
                 </span>
@@ -516,6 +516,16 @@
 </ul>
 <p>系统调用需要使用到某些特权指令才能完成，所以系统调用由操作系统内核程序负责完成，请求操作系统提供服务，目的是保证系统的安全性和稳定性，防止用户程序随意更改和访问重要的系统资源，影响其他进程的运行。</p>
 <p><img src="/images/OSreview/系统调用执行过程.png" alt="图1.2"></p>
+<p>用户态到核心态的例子：</p>
+<ul>
+<li>用户程序要求操作系统的服务，即系统调用</li>
+<li>发生一次中断</li>
+<li>用户程序中产生了一个错误状态</li>
+<li>用户程序中企图执行一条特权指令</li>
+<li>从核心态转向用户态由一条指令实现，是特权指令，一般是中断返回指令</li>
+</ul>
+<p>由用户态进入核心态需要切换的不仅是状态，所用的堆栈也可能需要由用户堆栈切换为系统堆栈，该堆栈也属于进程。</p>
+<p>用户态到核心态的转变，需要用户执行访管指令，要注意的是访管指令在用户态执行，所以其不是特权指令。</p>
 
       
     </div>

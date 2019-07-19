@@ -87,12 +87,12 @@
 <meta property="og:site_name" content="Codingcheng">
 <meta property="og:description" content="该章内容通常以选择题的形式考查，考查重点是操作系统的功能、运行环境和提供的服务。注意，在操作系统学习的过程中，最重要的是理解和学习操作系统是如何控制和协调处理机、存储器、设备和文件的，而接口和扩充机器只需了解即可。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/OSreview/第一章_中断.png">
-<meta property="og:updated_time" content="2019-07-19T05:26:09.069Z">
+<meta property="og:image" content="http://yoursite.com/images/OSreview/中断.png">
+<meta property="og:updated_time" content="2019-07-19T05:33:28.630Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统考研复习第一章 计算机系统概述">
 <meta name="twitter:description" content="该章内容通常以选择题的形式考查，考查重点是操作系统的功能、运行环境和提供的服务。注意，在操作系统学习的过程中，最重要的是理解和学习操作系统是如何控制和协调处理机、存储器、设备和文件的，而接口和扩充机器只需了解即可。">
-<meta name="twitter:image" content="http://yoursite.com/images/OSreview/第一章_中断.png">
+<meta name="twitter:image" content="http://yoursite.com/images/OSreview/中断.png">
 
 
 
@@ -301,7 +301,7 @@
             
                 <span class="post-updated">
                  &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2019-07-19T13:26:09+08:00" content="2019-07-19">
+              <time itemprop="dateUpdated" datetime="2019-07-19T13:33:28+08:00" content="2019-07-19">
                 2019-07-19
               </time>
                 </span>
@@ -503,7 +503,7 @@
 <h3 id="异常和中断的概念"><a href="#异常和中断的概念" class="headerlink" title="异常和中断的概念"></a>异常和中断的概念</h3><p>中断和异常的设计目的是为了方便用户态和核心态这两种状态之间的切换。发生中断或异常时，运行用户态的CPU会立即进入核心态，这是通过硬件实现的（例如，用一个特殊寄存器的一位来表示CPU的工作状态，0表示核心态，1表示用户态。通过寄存器状态切换，切换CPU的工作状态。）</p>
 <p>中断也称为外中断，指来自CPU执行指令以外的事件的发生，如设备发出的I/O结束中断，表示设备输入/输出处理已经完成，希望处理机能够向设备发下一个输入/输出请求，同时让完成输入/输出后的程序继续运行，类似的还有时钟中断，表示一个固定的时间片已到，让处理机处理计时，启动定时运行的任务等。这一类中断通常是与当前程序运行无关的事件，即它们与当前处理机运行的程序无关。</p>
 <p>异常也称内中断、例外或陷入（trap），指源自CPU执行指令内部的事件，如程序的非法操作码，地址越界，算术溢出，虚存系统的缺及专门的陷入指令等引起的事件。对异常的处理一般要依赖于当前程序的运行现场，而且异常不能被屏蔽，一旦出现应立即处理。</p>
-<p><img src="/images/OSreview/第一章_中断.png" alt="图1.1"></p>
+<p><img src="/images/OSreview/中断.png" alt="图1.1"></p>
 
       
     </div>
